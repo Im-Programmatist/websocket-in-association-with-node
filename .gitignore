@@ -1,9 +1,13 @@
 # Node Module
-./websocker-server/node_modules
-./websocket-chat-demo/node_modules
-
-./websocker-server/node_modules/*
-./websocket-chat-demo/node_modules/*
-
 websocker-server/node_modules
 websocket-chat-demo/node_modules
+
+websocker-server/node_modules/*
+websocket-chat-demo/node_modules/*
+
+
+# Package-lock.json
+websocker-server/.package-lock.json
+websocker-server/node_modules/.package-lock.json
+websocket-chat-demo/.package-lock.json
+websocket-chat-demo/node_modules/.package-lock.json
