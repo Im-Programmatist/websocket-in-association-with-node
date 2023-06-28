@@ -1,0 +1,22 @@
+{
+  "name": "Websocket-client-server-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-server": "node WebSocket-Server.js",
+    "start-client": "node WebSocket-Client.js",
+    "dev-start": "concurrently --kill-others \"npm run start-server\" \"npm run start-client\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "ws": "^8.13.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  }
+}

@@ -1,0 +1,6 @@
+# Node Module
+./websocker-server/node_modules
+./websocket-chat-demo/node_modules
+
+./websocker-server/node_modules/*
+./websocket-chat-demo/node_modules/*

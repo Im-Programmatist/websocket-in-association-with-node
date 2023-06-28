@@ -1,0 +1,92 @@
+<html>
+    <body>
+        <div id="content"></div>
+        <script src="./jquery.min.js"></script>
+        <script>
+            $(function () {
+                "use strict";
+    console.log('entered in frontend js file....');
+ // if user is running mozilla then use it's built-in WebSocket
+ window.WebSocket = window.WebSocket || window.MozWebSocket;
+    // if browser doesn't support WebSocket, just show
+    // some notification and exit
+    if (!window.WebSocket) {
+      content.html($('<p>',
+        { text:'Sorry, but your browser doesn\'t support WebSocket.'}
+      ));
+      input.hide();
+      $('span').hide();
+      return;
+    }
+    // open connection
+    //Make handshake to websocket server with HTTP upgraded connection 
+    console.log('calling ', `ws://localhost:3000`);
+    var socket = new WebSocket('ws://localhost:3000');
+    // var socket = new WebSocket(`ws://localhost:3000`, {
+    //     headers: {
+    //     Origin: "http://localhost"
+    //     }
+    // })
+    socket.onerror = function (error) {
+      // just in there were some problems with connection...
+      content.html($('<p>', {
+        text: 'Sorry, but there\'s some problem with your '
+           + 'connection or the server is down.'
+      }));
+    };
+    /**
+     * Send Data To Server
+    */
+    socket.onopen = function () {
+        console.log('connection opened...\n Sending data to server...');
+        dataInterval =  setInterval(sendData, 3000);
+    };
+        
+    /**
+     * Receive Data From Server
+     */
+    socket.onmessage = function (message) {
+        console.log('server message received', message.data);
+    };
+
+    socket.onclose = function(data){
+        console.log('connection closed', data);
+        clearInterval(dataInterval);
+    };
+    //socket.addEventListener('message', ({ data }) => { console.log(JSON.parse(data)) });
+var dataInterval;
+let counter = 0;
+let sendData = () => {
+   //console.log('Settimeout-socket.readyState : ', socket.readyState, 'counter -', counter );
+   //Pass data to websocket server
+   if (socket.readyState !== WebSocket.CLOSED) {
+       var msg = `This is my ${counter} try to send data` ;
+       // send data server
+        switch(counter){
+            case 0:
+                socket.send(JSON.stringify({ method: 'auth', args: ['admin', 'wrong'] }));
+                break;
+            case 1:
+                socket.send(JSON.stringify({ method: 'auth', args: ['admin', 'secret'] }));
+                break;
+            case 2:
+                socket.send(JSON.stringify({ method: 'getUsers' }));
+                break
+            default:
+                // for(let i = 0; i < counter; i++) {
+                //     msg+=msg;
+                // } 
+                socket.send(JSON.stringify({ method: 'random', args: msg }));
+               // socket.send("hello");
+        }
+        counter++;
+    }
+}
+
+
+            });
+
+
+        </script>
+    </body>
+</html>
