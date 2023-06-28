@@ -52,11 +52,11 @@
 ### Receiving Data To Client Over websocket
    - endpoint listens on the underlying network connection, Incoming data MUST be parsed as WebSocket frames.
 
-### The WebSocket Protocol can be identified in proxy auto configuration scripts from the scheme ("ws" for unencrypted connections and "wss" for encrypted connections).
+**The WebSocket Protocol can be identified in proxy auto configuration scripts from the scheme ("ws" for unencrypted connections and "wss" for encrypted connections).**
 
-### To accept the incoming connection the server must respond with an HTTP response with status 101 Switching Protocols & The response must contain a Sec-WebSocket-Accept header with a value generated using Sec-WebSocket-Key and concatenate it with a GUID value 258EDFA5-E914–47DA-95CA-C5AB0DC85B11 with SHA1 hash
+**To accept the incoming connection the server must respond with an HTTP response with status 101 Switching Protocols & The response must contain a Sec-WebSocket-Accept header with a value generated using Sec-WebSocket-Key and concatenate it with a GUID value 258EDFA5-E914–47DA-95CA-C5AB0DC85B11 with SHA1 hash**
 
-### A GUID (globally unique identifier) is a 128-bit text string that represents an identification (ID). Organizations generate GUIDs when a unique reference number is needed to identify information on a computer or network. 
+**A GUID (globally unique identifier) is a 128-bit text string that represents an identification (ID). Organizations generate GUIDs when a unique reference number is needed to identify information on a computer or network.** 
 
 
 ## Reference
