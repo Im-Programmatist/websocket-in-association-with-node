@@ -4,7 +4,7 @@
 
 ## 
 
-
+<img src="https://e7.pngegg.com/pngimages/115/523/png-clipart-product-design-brand-logo-font-demo-text-orange-thumbnail.png" width="10%" heigth="auto" alt="test"/>
 ### Opening Handshake -
     - The handshake from the client looks as follows:
 
